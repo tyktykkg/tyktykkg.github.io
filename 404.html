@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ТукТук</title>
+<meta property="og:site_name" content="ТукТук">
+<meta property="og:title" content="ТукТук">
+<meta property="og:description" content="Такси, доставка и межгород — откройте в приложении ТукТук">
+<meta property="og:type" content="website">
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0; font-family: system-ui, -apple-system, Roboto, sans-serif;
+         background: #1f1b12; color: #f5efe0; display: flex; min-height: 100vh;
+         align-items: center; justify-content: center; text-align: center; }
+  main { max-width: 360px; padding: 24px 16px; }
+  h1 { font-size: 28px; margin: 0 0 8px; }
+  h1 span { color: #3ddc84; }
+  p { opacity: .85; line-height: 1.45; }
+  a.btn { display: block; margin: 12px 0; padding: 14px; border-radius: 14px;
+          background: #3ddc84; color: #10200f; font-weight: 700; text-decoration: none; }
+  a.alt { background: transparent; color: #f5efe0; border: 1px solid #6b6250; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Тук<span>Тук</span></h1>
+  <p id="msg">Такси, доставка и межгород. Установите приложение ТукТук, чтобы посмотреть все детали.</p>
+  <a class="btn" id="open" href="#">Открыть в ТукТук</a>
+  <a class="btn alt" id="install" href="https://play.google.com/store/apps/details?id=com.tyktyk.app">Установить из Google Play</a>
+</main>
+<script>
+  // Shared link /s/<t|r|v>/<id>: open it in the app when installed; otherwise
+  // Google Play, passing the link on as the install referrer so the app opens
+  // the same trip right after installing.
+  (function () {
+    var pkg = 'com.tyktyk.app';
+    var path = location.pathname;
+    var play = 'https://play.google.com/store/apps/details?id=' + pkg;
+    if (!/^\/s\/[trv]\/[0-9a-fA-F-]{8,}\/?$/.test(path)) {
+      document.getElementById('open').style.display = 'none';
+      return;
+    }
+    path = path.replace(/\/$/, '');
+    play += '&referrer=' + encodeURIComponent('link=' + path);
+    var intent = 'intent://' + location.host + path +
+      '#Intent;scheme=https;package=' + pkg +
+      ';S.browser_fallback_url=' + encodeURIComponent(play) + ';end';
+    document.getElementById('install').href = play;
+    var open = document.getElementById('open');
+    open.href = /Android/i.test(navigator.userAgent) ? intent : play;
+    if (/Android/i.test(navigator.userAgent)) location.replace(intent);
+  })();
+</script>
+</body>
+</html>

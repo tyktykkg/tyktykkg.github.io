@@ -1,0 +1,27 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.tyktyk.app",
+      "sha256_cert_fingerprints": [
+        "1F:75:9E:0F:36:04:78:C9:1F:C9:E2:D2:CF:51:1D:E8:32:3D:55:F9:1E:B0:81:27:C9:C9:1E:D1:AF:61:6A:C7",
+        "4E:B4:2B:A8:AB:68:C7:79:22:69:B1:00:65:8F:5A:27:2F:3F:43:B2:77:19:A2:6F:A9:B4:8A:FA:23:05:1E:5B"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.tyktyk.app.dev",
+      "sha256_cert_fingerprints": [
+        "4E:B4:2B:A8:AB:68:C7:79:22:69:B1:00:65:8F:5A:27:2F:3F:43:B2:77:19:A2:6F:A9:B4:8A:FA:23:05:1E:5B"
+      ]
+    }
+  }
+]
